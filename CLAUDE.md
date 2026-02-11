@@ -1,7 +1,6 @@
-# Project Name
+# claude-collective-example
 
-<!-- Replace with your project name and a one-line description -->
-> **One-line description of what this project does and who it serves.**
+> **SaaS platform that lets users schedule reports, set delivery cadence, and automatically distribute them to their teams.**
 
 ## Project Context
 
@@ -9,49 +8,37 @@
 
 | Attribute | Value |
 |-----------|-------|
-| Maturity | `proof-of-concept` / `mvp` / `production` |
-| Domain | <!-- e.g., fintech, healthcare, developer tooling, internal ops --> |
-| Primary Users | <!-- e.g., internal developers, end customers, ops team --> |
-| Compliance | <!-- e.g., none, SOC 2, HIPAA, PCI-DSS, FedRAMP --> |
+| Maturity | `mvp` |
+| Domain | SaaS / business intelligence / reporting |
+| Primary Users | End customers (teams receiving scheduled reports) |
+| Compliance | None |
 
 ### Maturity Expectations
 
-<!-- Delete the rows that don't apply and keep only your maturity level -->
-
-| Concern | Proof-of-Concept | MVP | Production |
-|---------|-------------------|-----|------------|
-| Testing | Smoke tests only | Happy path + critical edges | Full coverage targets (80%+) |
-| Error handling | Console output is fine | Basic error responses | Structured errors, monitoring, alerting |
-| Security | Don't store real secrets | Auth + input validation | Full OWASP audit, dependency scanning, threat model |
-| Documentation | README with setup steps | README + API basics | Full docs suite, ADRs, runbooks |
-| Performance | Ignore unless broken | Profile obvious bottlenecks | Load testing, SLOs, optimization |
-| Code review | Optional | Light review | Full review + security audit gate |
-| Infrastructure | Local dev only | Basic CI + single deploy target | Full CI/CD, staging, monitoring, IaC |
+| Concern | MVP |
+|---------|-----|
+| Testing | Happy path + critical edges |
+| Error handling | Basic error responses |
+| Security | Auth + input validation |
+| Documentation | README + API basics |
+| Performance | Profile obvious bottlenecks |
+| Code review | Light review |
+| Infrastructure | Basic CI + single deploy target |
 
 ## Goals
 
-<!-- What is this project trying to achieve? Be specific. -->
-
-1. <!-- Primary goal -->
-2. <!-- Secondary goal -->
-3. <!-- Tertiary goal -->
+1. Enable users to schedule reports with configurable cadence (daily, weekly, monthly, custom cron)
+2. Support multiple report types with team-based delivery (email, in-app notifications)
+3. Provide a self-service UI for managing report schedules, recipients, and delivery preferences
 
 ## Non-Goals
 
-<!-- What this project explicitly does NOT do. Helps agents avoid scope creep. -->
-
-- <!-- e.g., "Does not handle payment processing — uses Stripe" -->
-- <!-- e.g., "No mobile app — web only for now" -->
-- <!-- e.g., "Not building a custom auth system — using Auth0" -->
+- None identified yet
 
 ## Constraints
 
-<!-- Technical, business, or organizational constraints agents should respect. -->
-
-- <!-- e.g., "Must integrate with existing PostgreSQL 14 database" -->
-- <!-- e.g., "All services must run in AWS us-east-1" -->
-- <!-- e.g., "Budget: no paid services beyond hosting during PoC" -->
-- <!-- e.g., "Must support IE11" or "Modern browsers only (last 2 versions)" -->
+- All dependencies must be open-source with Fedora-allowed licenses
+- Modern browsers only (last 2 versions)
 
 ## Stakeholder Preferences
 
@@ -60,16 +47,13 @@
 
 | Preference Area | Observed Pattern |
 |-----------------|-----------------|
-| Review thoroughness | <!-- e.g., "Prefers detailed reviews with specific line references" --> |
-| Risk tolerance | <!-- e.g., "Conservative — prefers proven patterns over cutting-edge" --> |
-| Scope decisions | <!-- e.g., "Tends to defer nice-to-haves to Phase 2" --> |
-| Communication style | <!-- e.g., "Prefers concise summaries with options, not lengthy analysis" --> |
-| Technology biases | <!-- e.g., "Strongly prefers Python over Node.js for backend services" --> |
-| Testing expectations | <!-- e.g., "Expects integration tests for every API endpoint, not just unit tests" --> |
-| Documentation level | <!-- e.g., "Wants ADRs for every significant decision, even in PoC" --> |
-
-<!-- Add rows as patterns emerge. Agents with project memory should update this section -->
-<!-- when they observe consistent preferences across multiple interactions. -->
+| Review thoroughness | <!-- To be observed --> |
+| Risk tolerance | Prefers most popular, proven open-source options over cutting-edge |
+| Scope decisions | <!-- To be observed --> |
+| Communication style | Concise, delegates details quickly, prefers defaults over lengthy discussion |
+| Technology biases | Prefers most popular open-source stack for each layer |
+| Testing expectations | <!-- To be observed --> |
+| Documentation level | <!-- To be observed --> |
 
 ## Red Hat AI Compliance
 
@@ -89,14 +73,15 @@ See `docs/ai-compliance-checklist.md` for the developer quick-reference checklis
 <!-- Record major technology choices here so all agents stay aligned. -->
 <!-- Move detailed trade-off analysis to docs/adr/ as the project matures. -->
 
-- **Language:** <!-- e.g., TypeScript 5.x -->
-- **Runtime:** <!-- e.g., Node.js 22 LTS -->
-- **Backend:** <!-- e.g., Fastify 5 -->
-- **Frontend:** <!-- e.g., React 19 + Vite -->
-- **Database:** <!-- e.g., PostgreSQL 16 -->
-- **ORM:** <!-- e.g., Drizzle -->
-- **Testing:** <!-- e.g., Vitest + Playwright -->
-- **Package Manager:** <!-- e.g., pnpm -->
+- **Language:** TypeScript 5.x (frontend), Python 3.12+ (backend)
+- **Runtime:** Node.js 22 LTS (frontend), Python 3.12+ (backend)
+- **Backend:** FastAPI
+- **Frontend:** React 19 + Vite
+- **Database:** PostgreSQL 16
+- **ORM:** SQLAlchemy 2.0 (async)
+- **Task Queue:** Celery + Redis
+- **Testing:** Vitest + React Testing Library (frontend), pytest (backend)
+- **Package Manager:** pnpm (frontend), uv (backend)
 
 ---
 
@@ -121,11 +106,8 @@ This project uses a multi-agent system with specialized Claude Code agents. The 
 | Review code quality | **Code Reviewer** | `@code-reviewer` |
 | Write or fix tests | **Test Engineer** | `@test-engineer` |
 | Audit security | **Security Engineer** | `@security-engineer` |
-| Optimize performance | **Performance Engineer** | `@performance-engineer` |
 | Set up CI/CD or infra | **DevOps Engineer** | `@devops-engineer` |
-| Define SLOs & incident response | **SRE Engineer** | `@sre-engineer` |
 | Debug a problem | **Debug Specialist** | `@debug-specialist` |
-| Write documentation | **Technical Writer** | `@technical-writer` |
 
 ### How It Works
 
@@ -139,7 +121,6 @@ This project uses a multi-agent system with specialized Claude Code agents. The 
 
 @.claude/rules/ai-compliance.md
 @.claude/rules/code-style.md
-@.claude/rules/python-style.md
 @.claude/rules/git-workflow.md
 @.claude/rules/testing.md
 @.claude/rules/security.md
@@ -155,36 +136,33 @@ This project uses a multi-agent system with specialized Claude Code agents. The 
 
 ## Project Commands
 
-<!-- Uncomment and fill in the actual commands for your project. -->
-<!-- The defaults below assume a Makefile-based workflow with Turborepo. -->
-
 ### Build
 ```bash
-# make build
+make build
 ```
 
 ### Test
 ```bash
-# make test
+make test
 ```
 
 ### Lint
 ```bash
-# make lint
+make lint
 ```
 
 ### Type Check
 ```bash
-# pnpm type-check
+pnpm type-check
 ```
 
 ### Database
 ```bash
-# make db-start
-# make db-upgrade
+make db-start
+make db-upgrade
 ```
 
 ### Dev Server
 ```bash
-# make dev
+make dev
 ```

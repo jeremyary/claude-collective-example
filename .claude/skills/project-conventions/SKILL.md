@@ -13,15 +13,17 @@ Customize the sections below to match your project. All agents reference these c
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
-| Backend Language | Python | 3.11+ |
+| Backend Language | Python | 3.12+ |
 | Backend Framework | FastAPI | — |
+| Task Queue | Celery | — |
+| Message Broker | Redis | — |
 | Frontend Language | TypeScript | 5.x |
 | Frontend Framework | React | 19.x |
 | Frontend Build | Vite | 6.x |
 | Frontend Routing | TanStack Router | — |
 | Frontend State | TanStack Query | — |
 | Frontend Styling | Tailwind CSS + shadcn/ui | — |
-| Database | PostgreSQL | — |
+| Database | PostgreSQL | 16 |
 | ORM | SQLAlchemy 2.0 (async) | — |
 | Migrations | Alembic | — |
 | Backend Testing | pytest | — |
