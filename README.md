@@ -1,6 +1,6 @@
 # Claude Collective Scaffold — Workshop Example
 
-This repository demonstrates the **Spec-Driven Development (SDD) process** provided by the [Claude Collective scaffold](https://github.com/jary-k/claude-collective). It walks a fictional SaaS application — a report scheduling platform — through every planning phase, from initial requirements gathering through to a ready-for-implementation work breakdown.
+This repository demonstrates the **Spec-Driven Development (SDD) process** provided by the [agent-scaffold](https://github.com/jeremyary/agent-scaffold). It walks a fictional SaaS application — a report scheduling platform — through every planning phase, from initial requirements gathering through to a ready-for-implementation work breakdown.
 
 **No application code has been written.** The value here is the artifact trail: the plans, reviews, architecture decisions, and work breakdown that the scaffold's multi-agent system produces *before* a single line of implementation begins.
 
@@ -62,7 +62,7 @@ The scaffold configuration lives in `.claude/` and `CLAUDE.md`. Key pieces:
 
 This repo is a completed example. To use the scaffold on your own project:
 
-1. Go to [claude-collective](https://github.com/jary-k/claude-collective)
+1. Go to [agent-scaffold](https://github.com/jeremyary/agent-scaffold)
 2. Click **"Use this template"** to create a new repository
 3. Run `/setup` in Claude Code for an interactive walkthrough
 
